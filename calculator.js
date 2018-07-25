@@ -1,3 +1,27 @@
+let a = 0;
+let b = 0;
+let operand = '';
+
+function read() {
+  return +document.getElementById('result').value || 0;
+}
+function write(value) {
+  document.getElementById('result').value = value;
+}
+function toInput(value) {
+  if (operand && b === 0) {
+    write (value);
+    b = value;
+  } else if (operand && b !== 0){
+    b = read() + value;
+    write(b);
+  } else {
+    write(read()+ value);
+  }
+}
+
+
+
 function toInput(id) {
     let value = document.getElementById(id).value;
     document.getElementById('result').value += value;
