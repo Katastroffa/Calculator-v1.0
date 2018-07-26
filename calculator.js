@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 let a = 0;
 let b = 0;
 let operand = '';
@@ -19,7 +20,16 @@ function toInput(value) {
     write(read()+ value);
   }
 }
+function substact() {
+  a = read();
+  operand = '-';
+}
+function getResult() {
+  if(operand && operand === '-'){
+    write(a-b);
+  }
 
+}
 
 
 function toInput(id) {
