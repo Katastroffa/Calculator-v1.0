@@ -1,49 +1,95 @@
-/* eslint-disable indent */
-let a = 0;
-let b = 0;
-let operand = '';
+let firstInputThenMemory=0,
+    secondInput = true,
+    operand = null;
 
-function read() {
-  return +document.getElementById('result').value || 0;
-}
-function write(value) {
-  document.getElementById('result').value = value;
-}
-function toInput(value) {
-  if (operand && b === 0) {
-    write (value);
-    b = value;
-  } else if (operand && b !== 0){
-    b = read() + value;
-    write(b);
-  } else {
-    write(read()+ value);
-  }
-}
-function substact() {
-  a = read();
-  operand = '-';
-}
-function getResult() {
-  if(operand && operand === '-'){
-    write(a-b);
-  }
-
+function initAction(id){
+    secondInput = true;
+    if (operand === null){
+        firstInputThenMemory = Number(fromInput());
+        operand = id;
+    }
+    else{
+        operand = id;
+        switchOperand();
+        toInput(firstInputThenMemory.toString());
+        secondInput = true;
+    }
 }
 
+function getResult(){
+    switchOperand();
+    fromInputClean(firstInputThenMemory.toString());
+    firstInputThenMemory = 0;
+    secondInput = true;
+    operand = null;
+}
 
 function toInput(id) {
-    let value = document.getElementById(id).value;
-    document.getElementById('result').value += value;
+    let a = document.getElementById('result').value;
+    if (secondInput) {
+        clearValue();
+        secondInput = false;
+    }
+    if (a === '0') document.getElementById('result').value = id;
+    else document.getElementById('result').value += id;
 }
 
-function subtract(){
-    const a = document.getElementById('').value;
-    const b = document.getElementById('').value;
-    return a-b;
+function fromInputClean(id){
+    clearValue();
+    toInput(id);
+}
+
+function newNumberInput(){
+    let result = document.getElementById('result').value;
+    clearValue();
+    return result;
+}
+
+document.getElementById('result').value = '0';
+
+function fromInput(){
+    return document.getElementById('result').value;
+}
+
+function switchOperand(){
+    switch(operand){
+    case '-':
+        firstInputThenMemory = firstInputThenMemory - Number(newNumberInput());
+        break;
+    case '+':
+        firstInputThenMemory = firstInputThenMemory + Number(newNumberInput());
+        break;
+    case '*':
+        firstInputThenMemory = firstInputThenMemory * Number(newNumberInput());
+        break;
+    case '/':
+        firstInputThenMemory = firstInputThenMemory / Number(newNumberInput());
+        break;
+    }
 }
 
 function clearValue() {
     document.getElementById('result').value = '';
 }
 
+function clearToInitialState() {
+    clearValue();
+}
+
+function calculate() {
+    switch (operand){
+    case '/':
+        result = result / num;
+        break;
+    case '*':
+        result = result * num;
+        break;
+    case '-':
+        result = Number(result) - Number(num);
+        break;
+    case '+':
+        result = Number(result) + Number(num);
+        break;
+    default:
+    }
+}
