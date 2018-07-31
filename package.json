@@ -1,0 +1,22 @@
+{
+  "name": "html2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Katastroffa/html2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Katastroffa/html2/issues"
+  },
+  "homepage": "https://github.com/Katastroffa/html2#readme",
+  "devDependencies": {
+    "eslint": "^5.2.0"
+  }
+}
